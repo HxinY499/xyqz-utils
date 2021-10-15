@@ -5,8 +5,8 @@ import { app } from "./index.js";
 
 const IndexPage = dynamic({
   app,
-  models: () => [import("./models/example")],
-  component: () => import("./routes/IndexPage"),
+  models: () => [import("./models/global")],
+  component: () => import("./routes/IndexPage/index"),
 });
 
 function RouterConfig({ history }) {

@@ -12,6 +12,6 @@ function IndexPage(props) {
 
 IndexPage.propTypes = {};
 
-export default connect(({ example }) => ({
-  example,
+export default connect(({ global }) => ({
+  global,
 }))(IndexPage);
