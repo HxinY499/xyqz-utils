@@ -1,19 +1,26 @@
-import { getRouterData } from "../utils/routerConfig";
+import { getRouterData } from "../utils/convertRouter";
+import { app } from "../index";
 
 const global = {
   namespace: "global",
 
   state: {
-    routerData: [11],
+    routerData: [],
   },
 
-  effects: {},
+  effects: {
+    *init(state, { put }) {
+      window.dvaApp = app;
+      const routes = getRouterData({ app });
+      yield put({ type: "updateState", payload: { routerData: routes } });
+    },
+  },
 
   reducers: {
-    init(state, { payload }) {
-      getRouterData();
+    updateState(state, { payload }) {
       return {
-        test1: [...state.test1, ...payload],
+        ...state,
+        ...payload,
       };
     },
   },

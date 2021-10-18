@@ -1,6 +1,7 @@
 import React from "react";
 import dynamic from "dva/dynamic";
 import routerConfig from "../config/routes";
+import { uuid } from "./utils";
 
 function dynamicWrapper(app, _models, _component, pageWrapperComponent) {
   return dynamic({
@@ -34,6 +35,11 @@ function dynamicWrapper(app, _models, _component, pageWrapperComponent) {
   });
 }
 
+const modelNotExisted = (app = {}, model) =>
+  !(app._models || []).some(({ namespace }) => {
+    return namespace === model.substring(model.lastIndexOf("/") + 1);
+  });
+
 function getConvertRouter(options) {
   const { app } = options;
   const routerData = routerConfig.map((config) => {
@@ -42,15 +48,8 @@ function getConvertRouter(options) {
     const title = config.title || "";
     const exact = config.exact || false;
     const icon = config.icon || null;
-    let cpn;
-    if (config.component === undefined) {
-      // cpn =
-    } else {
-      cpn =
-        typeof config.component === "string"
-          ? () => config.component
-          : config.component;
-    }
+    const key = uuid();
+    let cpn = config.component;
     const component = dynamicWrapper(
       app,
       models,
@@ -63,6 +62,7 @@ function getConvertRouter(options) {
       title,
       exact,
       icon,
+      key,
     };
   });
   return routerData;
