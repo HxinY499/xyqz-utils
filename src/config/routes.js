@@ -12,7 +12,7 @@ const router = [
   {
     path: "/",
     component: () => import("../routes/IndexPage/index"),
-    models: ["test"],
+    models: ["test", () => import("../models/test2")],
     exact: true,
   },
   {

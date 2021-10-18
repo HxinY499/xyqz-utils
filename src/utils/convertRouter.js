@@ -8,7 +8,7 @@ function dynamicWrapper(app, _models, _component, pageWrapperComponent) {
     app,
     models: () =>
       _models
-        .filter((item) => typeof item === "function" || "string")
+        .filter((item) => modelNotExisted(app, item))
         .map((model) => {
           if (typeof model === "function") {
             return model();
@@ -35,10 +35,20 @@ function dynamicWrapper(app, _models, _component, pageWrapperComponent) {
   });
 }
 
-const modelNotExisted = (app = {}, model) =>
-  !(app._models || []).some(({ namespace }) => {
-    return namespace === model.substring(model.lastIndexOf("/") + 1);
+const modelNotExisted = (app = {}, model) => {
+  const modelString = model.toString();
+  let _model =
+    typeof model === "function"
+      ? modelString.substring(
+          modelString.lastIndexOf("/") + 1,
+          modelString.lastIndexOf(".")
+        )
+      : modelString;
+  const exist = (app._models || []).some(({ namespace }) => {
+    return namespace === _model;
   });
+  return !exist;
+};
 
 function getConvertRouter(options) {
   const { app } = options;
