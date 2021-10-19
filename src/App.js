@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "dva";
-import { BrowserRouter } from "react-router-dom";
+import { withRouter, BrowserRouter } from "react-router-dom";
 import { Route, Switch } from "dva/router";
 import styles from "./index.css";
+import XYRouter from "./router";
 
 class App extends React.Component {
   constructor(props) {
@@ -13,36 +14,50 @@ class App extends React.Component {
     this.props.init();
   }
 
+  handleRoute = (path) => {
+    console.log(path);
+    this.props.history.push(path);
+  };
+
   render() {
-    const { history, global } = this.props;
+    const { global, history } = this.props;
     return (
       <>
         <div className={styles.indexHeader}>
           <span className={styles.headerTitle}>xyqz-utils</span>
         </div>
         <div className={styles.indexContent}>
-          <div className={styles.navBar}>
+          <div className={styles.indexNavBar}>
             {(global.routerData || []).map((item) => {
-              return <div>{item.title}</div>;
+              return (
+                <div
+                  className={styles.indexNavBarItem}
+                  onClick={() => this.handleRoute(item.path)}
+                >
+                  {item.icon}
+                  <span className={styles.indexNavBarItemText}>
+                    {item.title}
+                  </span>
+                </div>
+              );
             })}
           </div>
-          <div className={styles.routeContent}>
-            {global.routerData.length > 0 && (
-              <BrowserRouter history={history}>
-                <Switch>
-                  {global.routerData?.map((item) => {
-                    return (
-                      <Route
-                        key={item.key}
-                        path={item.path}
-                        component={item.component}
-                        exact={item.exact}
-                      />
-                    );
-                  })}
-                </Switch>
-              </BrowserRouter>
-            )}
+          <div className={styles.routeContentWrapper}>
+            <div className={styles.routeContent}>
+              {/* {global.routerData.length > 0 && <XYRouter />} */}
+              <Switch>
+                <Route
+                  path="/"
+                  component={require("./routes/IndexPage/index").default}
+                  exact={true}
+                />
+                <Route
+                  path="/test"
+                  component={require("./routes/Test/index").default}
+                  // exact={true}
+                />
+              </Switch>
+            </div>
           </div>
         </div>
       </>
@@ -61,7 +76,8 @@ function mapDispatchToProps(dispatch) {
     init() {
       return dispatch({ type: "global/init" });
     },
+    dispatch,
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));

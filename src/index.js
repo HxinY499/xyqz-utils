@@ -1,5 +1,7 @@
 import dva from "dva";
 import { createBrowserHistory as createHistory } from "history";
+// import { BrowserRouter } from "react-router-dom";
+import { Router } from "dva/router";
 import App from "./App";
 import "./index.css";
 
@@ -18,7 +20,13 @@ app.model(require("./models/global").default);
 // app.model(require("./models/products").default);
 
 // 4. Router
-app.router(() => <App />);
+app.router(({ history }) => {
+  return (
+    <Router history={history}>
+      <App />
+    </Router>
+  );
+});
 
 // 5. Start
 app.start("#root");

@@ -6,17 +6,63 @@ body,
   padding: 0;
 }
 
-body {
-  background-color: #f3f4f5;
-}
-
 .indexHeader {
   position: sticky;
   top: 0;
-  font-size: 2rem;
-  padding: 0.5em 1em;
+  font-size: 1.5rem;
+  padding: 0 0.8em;
   background-color: #fff;
+  height: 57px;
+  line-height: 57px;
 }
 .indexHeader .headerTitle {
   font-weight: bold;
+}
+.indexContent {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 92vh;
+  overflow: hidden;
+}
+.indexContent .indexNavBar {
+  width: 200px;
+  background-color: #1e3255;
+  height: 100%;
+  padding: 15px 0;
+}
+.indexContent .indexNavBar .indexNavBarItem {
+  width: 100%;
+  cursor: pointer;
+  color: #fff;
+  padding: 10px 0 10px 10px;
+  transition: all 0.2s;
+}
+.indexContent .indexNavBar .indexNavBarItem .indexNavBarItemText {
+  display: inline-block;
+  margin-left: 10px;
+}
+.indexContent .indexNavBar .indexNavBarItem:hover {
+  background-color: #29b6c7;
+}
+.indexContent .indexNavBar .indexNavBarItemActive {
+  background-color: #29b6c7;
+}
+.indexContent .routeContentWrapper {
+  box-sizing: border-box;
+  background-color: #f3f4f5;
+  flex: 1;
+  height: 100%;
+  padding: 15px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.indexContent .routeContentWrapper .routeContent {
+  box-sizing: border-box;
+  background-color: #fff;
+  width: 100%;
+  min-height: 100%;
+  padding: 15px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }

@@ -8,18 +8,24 @@
 //   icon: React Node, 菜单栏图标,
 // }
 
+import { BookOutlined, CommentOutlined } from "@ant-design/icons";
+
 const router = [
   {
     path: "/",
     component: () => import("../routes/IndexPage/index"),
     models: ["test", () => import("../models/test2")],
     exact: true,
+    title: "首页",
+    icon: <BookOutlined />,
   },
   {
     path: "/test",
     component: () => import("../routes/Test/index"),
     models: ["test"],
     exact: true,
+    title: "后端DTO转前端DS",
+    icon: <CommentOutlined />,
   },
 ];
 
