@@ -1,68 +1,60 @@
 import React from "react";
 import { connect } from "dva";
-import { withRouter, BrowserRouter } from "react-router-dom";
 import { Route, Switch } from "dva/router";
 import styles from "./index.css";
-import XYRouter from "./router";
 
-class App extends React.Component {
-  constructor(props) {
-    super();
-  }
+function App(props) {
+  const { init, global, history } = props;
+  React.useEffect(() => {
+    init();
+    console.log(history);
+  }, []);
 
-  componentDidMount() {
-    this.props.init();
-  }
-
-  handleRoute = (path) => {
-    console.log(path);
-    this.props.history.push(path);
+  const handleRoute = (path) => {
+    history.push({ pathname: path });
   };
 
-  render() {
-    const { global, history } = this.props;
-    return (
-      <>
-        <div className={styles.indexHeader}>
-          <span className={styles.headerTitle}>xyqz-utils</span>
+  return (
+    <>
+      <div className={styles.indexHeader}>
+        <span className={styles.headerTitle}>xyqz-utils</span>
+      </div>
+      <div className={styles.indexContent}>
+        <div className={styles.indexNavBar}>
+          {(global.routerData || []).map((item) => {
+            return (
+              <div
+                className={styles.indexNavBarItem}
+                onClick={() => handleRoute(item.path)}
+              >
+                {item.icon}
+                <span className={styles.indexNavBarItemText}>{item.title}</span>
+              </div>
+            );
+          })}
         </div>
-        <div className={styles.indexContent}>
-          <div className={styles.indexNavBar}>
-            {(global.routerData || []).map((item) => {
-              return (
-                <div
-                  className={styles.indexNavBarItem}
-                  onClick={() => this.handleRoute(item.path)}
-                >
-                  {item.icon}
-                  <span className={styles.indexNavBarItemText}>
-                    {item.title}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-          <div className={styles.routeContentWrapper}>
-            <div className={styles.routeContent}>
-              {/* {global.routerData.length > 0 && <XYRouter />} */}
+        <div className={styles.routeContentWrapper}>
+          <div className={styles.routeContent}>
+            {/* { history.location.pathname === '/' && <Redirect from="/" to="/index" /> } */}
+            {global.routerData.length > 0 && (
               <Switch>
-                <Route
-                  path="/"
-                  component={require("./routes/IndexPage/index").default}
-                  exact={true}
-                />
-                <Route
-                  path="/test"
-                  component={require("./routes/Test/index").default}
-                  // exact={true}
-                />
+                {global.routerData?.map((item) => {
+                  return (
+                    <Route
+                      key={item.key}
+                      path={item.path}
+                      component={item.component}
+                      exact={item.exact}
+                    />
+                  );
+                })}
               </Switch>
-            </div>
+            )}
           </div>
         </div>
-      </>
-    );
-  }
+      </div>
+    </>
+  );
 }
 
 function mapStateToProps({ global }) {
@@ -80,4 +72,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
+export default connect(mapStateToProps, mapDispatchToProps)(App);

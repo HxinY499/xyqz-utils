@@ -1,15 +1,13 @@
 import dva from "dva";
-import { createBrowserHistory as createHistory } from "history";
-// import { BrowserRouter } from "react-router-dom";
-import { Router } from "dva/router";
+import { createBrowserHistory } from "history";
+import { Router, Route } from "dva/router";
 import App from "./App";
 import "./index.css";
 
-// const { ConnectedRouter } = routerRedux;
-
+const history = createBrowserHistory();
 // 1. Initialize
 const app = dva({
-  history: createHistory(),
+  history,
 });
 
 // 2. Plugins
@@ -17,13 +15,12 @@ const app = dva({
 
 // 3. Model
 app.model(require("./models/global").default);
-// app.model(require("./models/products").default);
 
 // 4. Router
 app.router(({ history }) => {
   return (
     <Router history={history}>
-      <App />
+      <Route path="/" component={App} />
     </Router>
   );
 });
