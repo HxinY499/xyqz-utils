@@ -5,13 +5,21 @@ import styles from "./index.css";
 import "antd/dist/antd.css";
 
 function App(props) {
-  const { init, global, history } = props;
+  const { init, global, history, location } = props;
   React.useEffect(() => {
     init();
   }, []);
 
   const handleRoute = (path) => {
     history.push({ pathname: path });
+  };
+
+  const generateClass = (path) => {
+    const className = [styles.indexNavBarItem];
+    if (path === location.pathname) {
+      className.push(styles.indexNavBarItemActive);
+    }
+    return className.join(" ");
   };
 
   return (
@@ -24,7 +32,7 @@ function App(props) {
           {(global.routerData || []).map((item) => {
             return (
               <div
-                className={styles.indexNavBarItem}
+                className={generateClass(item.path)}
                 onClick={() => handleRoute(item.path)}
               >
                 {item.icon}

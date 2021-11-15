@@ -1,3 +1,8 @@
+:root {
+  --main-color-dark: #1e3255;
+  --main-color-light: #29b6c7;
+}
+
 html,
 body,
 :global(#root) {
@@ -27,7 +32,7 @@ body,
 }
 .indexContent .indexNavBar {
   width: 200px;
-  background-color: #1e3255;
+  background-color: var(--main-color-dark);
   height: 100%;
   padding: 15px 0;
 }
@@ -43,10 +48,18 @@ body,
   margin-left: 10px;
 }
 .indexContent .indexNavBar .indexNavBarItem:hover {
-  background-color: #29b6c7;
+  background-image: linear-gradient(
+    to right,
+    var(--main-color-dark),
+    var(--main-color-light)
+  );
 }
 .indexContent .indexNavBar .indexNavBarItemActive {
-  background-color: #29b6c7;
+  background-image: linear-gradient(
+    to right,
+    var(--main-color-dark),
+    var(--main-color-light)
+  );
 }
 .indexContent .routeContentWrapper {
   box-sizing: border-box;
