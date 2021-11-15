@@ -368,14 +368,43 @@ module.exports = function (webpackEnv) {
           // match the requirements. When no loader matches it will fall
           // back to the "file" loader at the end of the loader list.
           oneOf: [
+            // {
+            //   test: /\.css$/,
+            //   use: [
+            //     "style-loader",
+            //     {
+            //       loader: "css-loader",
+            //       options: {
+            //         modules: true,
+            //       },
+            //     },
+            //   ],
+            // },
             {
+              //CSS处理
               test: /\.css$/,
+              exclude: /node_modules/,
               use: [
-                "style-loader",
+                { loader: "style-loader" },
                 {
                   loader: "css-loader",
                   options: {
                     modules: true,
+                  },
+                },
+              ],
+            },
+
+            {
+              //antd样式处理
+              test: /\.css$/,
+              exclude: /src/,
+              use: [
+                { loader: "style-loader" },
+                {
+                  loader: "css-loader",
+                  options: {
+                    importLoaders: 1,
                   },
                 },
               ],

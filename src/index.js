@@ -2,7 +2,6 @@ import dva from "dva";
 import { createBrowserHistory } from "history";
 import { Router, Route } from "dva/router";
 import App from "./App";
-import "./index.css";
 
 const history = createBrowserHistory();
 // 1. Initialize

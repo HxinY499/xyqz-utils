@@ -1,0 +1,11 @@
+.code-wrapper {
+  display: flex;
+  gap: 100px;
+}
+.left-code,
+.right-code {
+  flex: 1;
+}
+:global .ant-input {
+  width: 100%;
+}

@@ -2,12 +2,12 @@ import React from "react";
 import { connect } from "dva";
 import { Route, Switch } from "dva/router";
 import styles from "./index.css";
+import "antd/dist/antd.css";
 
 function App(props) {
   const { init, global, history } = props;
   React.useEffect(() => {
     init();
-    console.log(history);
   }, []);
 
   const handleRoute = (path) => {

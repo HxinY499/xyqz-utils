@@ -14,15 +14,15 @@ const router = [
   {
     path: "/",
     component: () => import("../routes/IndexPage/index"),
-    models: ["test", () => import("../models/test2")],
+    models: [],
     exact: true,
     title: "首页",
     icon: <BookOutlined />,
   },
   {
     path: "/test",
-    component: () => import("../routes/Test/index"),
-    models: ["test"],
+    component: () => import("../routes/DTOConverDS/index"),
+    models: [],
     exact: true,
     title: "后端DTO转前端DS",
     icon: <CommentOutlined />,
