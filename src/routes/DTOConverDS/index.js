@@ -12,6 +12,10 @@ function DTOConverDS() {
   const rightRef = React.useRef();
   const [fileds, setFields] = React.useState("");
 
+  React.useEffect(() => {
+    console.log("useEffect");
+  }, []);
+
   function handleConver() {
     const fields = [];
     const dto = leftRef.current?.resizableTextArea?.textArea?.value;

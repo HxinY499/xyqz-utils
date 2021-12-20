@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "dva";
-import { Route, Switch } from "dva/router";
+import { Route, Switch, withRouter } from "react-router";
+import { CacheRoute, CacheSwitch } from "./utils/cacheRoute/index.ts";
 import styles from "./index.css";
 import "antd/dist/antd.css";
 
@@ -25,7 +26,7 @@ function App(props) {
   return (
     <>
       <div className={styles.indexHeader}>
-        <span className={styles.headerTitle}>xyqz-utils</span>
+        <span className={styles.headerTitle}>HxinY</span>{" "}
       </div>
       <div className={styles.indexContent}>
         <div className={styles.indexNavBar}>
@@ -45,18 +46,21 @@ function App(props) {
           <div className={styles.routeContent}>
             {/* { history.location.pathname === '/' && <Redirect from="/" to="/index" /> } */}
             {global.routerData.length > 0 && (
-              <Switch>
+              <CacheSwitch>
                 {global.routerData?.map((item) => {
                   return (
-                    <Route
+                    <CacheRoute
                       key={item.key}
                       path={item.path}
                       component={item.component}
                       exact={item.exact}
+                      shouldReMount={false}
+                      shouldMatchExact={true}
+                      shouldDestroyDomWhenNotMatch={false}
                     />
                   );
                 })}
-              </Switch>
+              </CacheSwitch>
             )}
           </div>
         </div>

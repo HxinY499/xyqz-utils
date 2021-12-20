@@ -1,6 +1,6 @@
 import dva from "dva";
 import { createBrowserHistory } from "history";
-import { Router, Route } from "dva/router";
+import { Router, Route } from "react-router";
 import App from "./App";
 
 const history = createBrowserHistory();
@@ -19,7 +19,7 @@ app.model(require("./models/global").default);
 app.router(({ history }) => {
   return (
     <Router history={history}>
-      <Route path="/" component={App} />
+      <Route children={(props) => <App {...props} />} />
     </Router>
   );
 });
