@@ -408,6 +408,19 @@ module.exports = function (webpackEnv) {
                 },
               ],
             },
+            {
+              test: /\.less$/,
+              use: [
+                { loader: "style-loader" },
+                {
+                  loader: "css-loader",
+                  options: {
+                    modules: true,
+                  },
+                },
+                { loader: "less-loader" },
+              ],
+            },
             // TODO: Merge this config once `image/avif` is in the mime-db
             // https://github.com/jshttp/mime-db
             {

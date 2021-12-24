@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "dva";
 import { Input, Button } from "antd";
 import styles from "./style.css";
 import { compact } from "../../utils/lodashFun";
@@ -100,6 +99,4 @@ function DTOConverDS() {
   );
 }
 
-export default connect(({ global }) => ({
-  global,
-}))(DTOConverDS);
+export default DTOConverDS;

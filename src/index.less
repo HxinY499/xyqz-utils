@@ -1,0 +1,79 @@
+@main-color-dark: #1e3255;
+@main-color-light: #29b6c7;
+
+html,
+body,
+:global(#root) {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.appWrapper {
+  height: 100%;
+  .indexHeader {
+    position: sticky;
+    top: 0;
+    font-size: 1.5rem;
+    padding: 0 0.8em;
+    background-color: #fff;
+    height: 57px;
+    line-height: 57px;
+    .headerTitle {
+      font-weight: bold;
+    }
+  }
+  .indexContent {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(~"100% - 57px");
+    .indexNavBar {
+      height: 100%;
+      width: 200px;
+      background-color: @main-color-dark;
+      padding: 15px 0;
+      .indexNavBarItem {
+        width: 100%;
+        cursor: pointer;
+        color: #fff;
+        padding: 10px 0 10px 10px;
+        transition: all 0.2s;
+        .indexNavBarItemText {
+          display: inline-block;
+          margin-left: 10px;
+        }
+        &:hover {
+          background-image: linear-gradient(
+            to right,
+            @main-color-dark,
+            @main-color-light
+          );
+        }
+      }
+      .indexNavBarItemActive {
+        background-image: linear-gradient(
+          to right,
+          @main-color-dark,
+          @main-color-light
+        );
+      }
+    }
+    .routeContentWrapper {
+      box-sizing: border-box;
+      background-color: #f3f4f5;
+      height: 100%;
+      width: calc(~"100vw - 200px");
+      // overflow: hidden;
+      .routeContent {
+        margin: 15px;
+        box-sizing: border-box;
+        background-color: #fff;
+        overflow: auto;
+        width: calc(~"100vw - 230px");
+        height: calc(~"100% - 30px");
+        padding: 15px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}

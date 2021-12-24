@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "dva";
 // import { Route, Switch, withRouter } from "react-router";
 import { CacheRoute, CacheSwitch } from "./components/CacheRoute/index.ts";
-import styles from "./index.css";
+import styles from "./index.less";
 import "antd/dist/antd.css";
 
 function App(props) {
@@ -25,7 +25,7 @@ function App(props) {
   };
 
   return (
-    <>
+    <div className={styles.appWrapper}>
       <div className={styles.indexHeader}>
         <span className={styles.headerTitle}>HxinY</span>{" "}
       </div>
@@ -36,6 +36,7 @@ function App(props) {
               <div
                 className={generateClass(item.path)}
                 onClick={() => handleRoute(item.path)}
+                key={item.key || Date.now().toString()}
               >
                 {item.icon}
                 <span className={styles.indexNavBarItemText}>{item.title}</span>
@@ -51,7 +52,7 @@ function App(props) {
                 {global.routerData?.map((item) => {
                   return (
                     <CacheRoute
-                      key={item.key}
+                      key={item.key || Date.now().toString()}
                       path={item.path}
                       component={item.component}
                       exact={item.exact}
@@ -66,7 +67,7 @@ function App(props) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
