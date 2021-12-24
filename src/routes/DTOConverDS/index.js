@@ -10,30 +10,29 @@ const { TextArea } = Input;
 function DTOConverDS() {
   const leftRef = React.useRef();
   const rightRef = React.useRef();
-  const [fileds, setFields] = React.useState("");
-
-  React.useEffect(() => {
-    console.log("useEffect");
-  }, []);
+  const [fields, setFields] = React.useState("");
+  const [count, setCount] = React.useState(0);
 
   function handleConver() {
-    const fields = [];
+    const result = [];
     const dto = leftRef.current?.resizableTextArea?.textArea?.value;
-    const group = compact(dto.split("@"));
+    let singleField = [];
+    const group = [];
+    compact(dto.split("\n"))?.forEach((item) => {
+      includes(item, ["@ApiModelProperty", "private"]) &&
+        singleField.push(item);
+      if (item.includes("private")) {
+        group.push(singleField);
+        singleField = [];
+      }
+    });
     group.forEach((dtoField) => {
       const dsField = {};
-      compact(dtoField.split(`\n`)).forEach((item) => {
-        if (item.includes("private")) {
-          const arr = compact(item.split(" "));
-          dsField.name = arr[2].includes(";")
-            ? arr[2].slice(0, arr[2].length - 1)
-            : arr[2];
-          if (includes(arr[1], ["List"])) {
-            dsField.type = "object";
-          } else if (includes(arr[1], ["String"])) {
-            dsField.type = "string";
-          }
-        } else if (item.includes("ApiModelProperty")) {
+      // 个人习惯将name和type写在label前面，所以反转数组
+      dtoField.reverse();
+      dtoField.forEach((item) => {
+        if (item.includes("@ApiModelProperty")) {
+          // 设置label
           compact(
             item.slice(item.indexOf("(") + 1, item.indexOf(")")).split(",")
           ).forEach((o) => {
@@ -45,11 +44,27 @@ function DTOConverDS() {
               dsField.label = label.slice(1, label.length - 1);
             }
           });
+        } else if (item.includes("private")) {
+          // 设置name和type
+          const arr = compact(item.split(" "));
+          dsField.name = arr[2].includes(";")
+            ? arr[2].slice(0, arr[2].length - 1)
+            : arr[2];
+          if (includes(arr[1], ["List"])) {
+            dsField.type = "object";
+          } else if (includes(arr[1], ["BigDecimal"])) {
+            dsField.type = "number";
+          } else if (includes(arr[1], ["Date"])) {
+            dsField.type = "date";
+          } else {
+            dsField.type = "string";
+          }
         }
       });
-      fields.push(dsField);
+      result.push(dsField);
     });
-    setFields(JSON.stringify(fields));
+    setCount(result.length);
+    setFields(JSON.stringify(result));
   }
 
   return (
@@ -61,6 +76,7 @@ function DTOConverDS() {
       >
         转换
       </Button>
+      <span className={styles.tip}>{count > 0 && `共${count}个field`}</span>
       <div className={styles["code-wrapper"]}>
         <div className={styles["left-code"]}>
           <TextArea
@@ -77,7 +93,7 @@ function DTOConverDS() {
           />
         </div>
         <div className={styles["right-code"]}>
-          <TextArea ref={rightRef} rows={25} value={fileds} />
+          <TextArea ref={rightRef} rows={25} value={fields} />
         </div>
       </div>
     </div>

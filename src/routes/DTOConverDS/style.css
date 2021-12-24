@@ -9,3 +9,6 @@
 :global .ant-input {
   width: 100%;
 }
+.tip {
+  margin-left: 20px;
+}

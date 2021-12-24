@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "dva";
-import { Route, Switch, withRouter } from "react-router";
-import { CacheRoute, CacheSwitch } from "./utils/cacheRoute/index.ts";
+// import { Route, Switch, withRouter } from "react-router";
+import { CacheRoute, CacheSwitch } from "./components/CacheRoute/index.ts";
 import styles from "./index.css";
 import "antd/dist/antd.css";
 
@@ -9,6 +9,7 @@ function App(props) {
   const { init, global, history, location } = props;
   React.useEffect(() => {
     init();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleRoute = (path) => {
