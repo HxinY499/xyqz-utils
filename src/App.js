@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "dva";
-// import { Route, Switch, withRouter } from "react-router";
 import { CacheRoute, CacheSwitch } from "./components/CacheRoute/index.ts";
 import styles from "./index.less";
 import "antd/dist/antd.css";
@@ -12,11 +11,11 @@ function App(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleRoute = (path) => {
+  const handleRoute = path => {
     history.push({ pathname: path });
   };
 
-  const generateClass = (path) => {
+  const generateClass = path => {
     const className = [styles.indexNavBarItem];
     if (path === location.pathname) {
       className.push(styles.indexNavBarItemActive);
@@ -31,7 +30,7 @@ function App(props) {
       </div>
       <div className={styles.indexContent}>
         <div className={styles.indexNavBar}>
-          {(global.routerData || []).map((item) => {
+          {(global.routerData || []).map(item => {
             return (
               <div
                 className={generateClass(item.path)}
@@ -49,7 +48,7 @@ function App(props) {
             {/* { history.location.pathname === '/' && <Redirect from="/" to="/index" /> } */}
             {global.routerData.length > 0 && (
               <CacheSwitch>
-                {global.routerData?.map((item) => {
+                {global.routerData?.map(item => {
                   return (
                     <CacheRoute
                       key={item.key || Date.now().toString()}
