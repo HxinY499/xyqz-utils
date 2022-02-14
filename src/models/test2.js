@@ -17,9 +17,7 @@ const test = {
   },
 
   subscriptions: {
-    setup({ dispatch, history }) {
-      // eslint-disable-line
-    },
+    setup({ dispatch, history }) {},
   },
 };
 export default test;
