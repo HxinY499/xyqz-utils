@@ -26,6 +26,20 @@ const router = [
     title: "后端DTO转前端DS",
     icon: <CommentOutlined />,
   },
+  {
+    path: "/grid-layout",
+    component: () => import("../routes/GridLayoutPage/index"),
+    exact: true,
+    title: "拖拽式卡片",
+    icon: <CommentOutlined />,
+  },
+  {
+    path: "/c7n-test",
+    component: () => import("../routes/C7NTest/index"),
+    exact: true,
+    title: "C7N组件测试",
+    icon: <CommentOutlined />,
+  },
 ];
 
 export default router;

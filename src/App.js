@@ -26,7 +26,14 @@ function App(props) {
   return (
     <div className={styles.appWrapper}>
       <div className={styles.indexHeader}>
-        <span className={styles.headerTitle}>HxinY</span>{" "}
+        <span
+          className={styles.headerTitle}
+          onClick={() => {
+            window.history.pushState(null, null, "#/c7n-test");
+          }}
+        >
+          HxinY
+        </span>{" "}
       </div>
       <div className={styles.indexContent}>
         <div className={styles.indexNavBar}>
@@ -85,4 +92,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
