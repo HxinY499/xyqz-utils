@@ -8,36 +8,50 @@
 //   icon: React Node, 菜单栏图标,
 // }
 
-import { BookOutlined, CommentOutlined } from "@ant-design/icons";
+import {
+  BookOutlined,
+  CommentOutlined,
+  FacebookOutlined,
+} from '@ant-design/icons';
 
 const router = [
   {
-    path: "/",
-    component: () => import("../routes/IndexPage/index"),
+    path: '/',
+    component: () => import('../routes/IndexPage/index'),
     models: [],
     exact: true,
-    title: "首页",
+    title: '首页',
     icon: <BookOutlined />,
   },
   {
-    path: "/dto-conver-ds",
-    component: () => import("../routes/DTOConverDS/index"),
+    path: '/dto-conver-ds',
+    component: () => import('../routes/DTOConverDS/index'),
     exact: true,
-    title: "后端DTO转前端DS",
+    title: '后端DTO转前端DS',
     icon: <CommentOutlined />,
   },
   {
-    path: "/grid-layout",
-    component: () => import("../routes/GridLayoutPage/index"),
+    path: '/grid-layout',
+    component: () => import('../routes/GridLayoutPage/index'),
     exact: true,
-    title: "拖拽式卡片",
+    title: '拖拽式卡片',
     icon: <CommentOutlined />,
   },
   {
-    path: "/c7n-test",
-    component: () => import("../routes/C7NTest/index"),
+    path: '/c7n-test',
+    component: () => import('../routes/C7NTest/index'),
     exact: true,
-    title: "C7N组件测试",
+    title: 'C7N组件测试',
+    icon: <CommentOutlined />,
+  },
+  {
+    path: '/react-app',
+    title: 'React子应用',
+    icon: <FacebookOutlined />,
+  },
+  {
+    path: '/vue-app',
+    title: 'Vue子应用',
     icon: <CommentOutlined />,
   },
 ];

@@ -1,4 +1,5 @@
 import dva from 'dva';
+import { registerMicroApps, start } from 'qiankun';
 import { createBrowserHistory } from 'history';
 import { Router, Route } from 'react-router';
 import { localeContext } from 'choerodon-ui/pro';
@@ -35,5 +36,22 @@ localeContext.setLocale(zh_CN);
 
 // 5. Start
 app.start('#root');
+
+registerMicroApps([
+  {
+    name: 'react app',
+    entry: 'http://localhost:8002',
+    container: '#react-app',
+    activeRule: '/react-app',
+  },
+  {
+    name: 'vue app',
+    entry: 'http://localhost:8001',
+    container: '#vue-app',
+    activeRule: '/vue-app',
+  },
+]);
+
+start();
 
 export { app };

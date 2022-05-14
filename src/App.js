@@ -1,8 +1,9 @@
-import React from "react";
-import { connect } from "dva";
-import { CacheRoute, CacheSwitch } from "./components/CacheRoute/index.ts";
-import styles from "./index.less";
-import "antd/dist/antd.css";
+import React from 'react';
+import { connect } from 'dva';
+// import { CacheRoute, CacheSwitch } from "./components/CacheRoute/index.ts";
+import { Route, Switch } from 'react-router';
+import styles from './index.less';
+import 'antd/dist/antd.css';
 
 function App(props) {
   const { init, global, history, location } = props;
@@ -20,7 +21,7 @@ function App(props) {
     if (path === location.pathname) {
       className.push(styles.indexNavBarItemActive);
     }
-    return className.join(" ");
+    return className.join(' ');
   };
 
   return (
@@ -29,11 +30,11 @@ function App(props) {
         <span
           className={styles.headerTitle}
           onClick={() => {
-            window.history.pushState(null, null, "#/c7n-test");
+            window.history.pushState(null, null, '#/c7n-test');
           }}
         >
           HxinY
-        </span>{" "}
+        </span>{' '}
       </div>
       <div className={styles.indexContent}>
         <div className={styles.indexNavBar}>
@@ -52,23 +53,25 @@ function App(props) {
         </div>
         <div className={styles.routeContentWrapper}>
           <div className={styles.routeContent}>
+            <div id="react-app" />
+            <div id="vue-app" />
             {/* { history.location.pathname === '/' && <Redirect from="/" to="/index" /> } */}
             {global.routerData.length > 0 && (
-              <CacheSwitch>
+              <Switch>
+                {/* shouldReMount={false}
+                    shouldMatchExact={true}
+                    shouldDestroyDomWhenNotMatch={false} */}
                 {global.routerData?.map(item => {
                   return (
-                    <CacheRoute
+                    <Route
                       key={item.key || Date.now().toString()}
                       path={item.path}
                       component={item.component}
                       exact={item.exact}
-                      shouldReMount={false}
-                      shouldMatchExact={true}
-                      shouldDestroyDomWhenNotMatch={false}
                     />
                   );
                 })}
-              </CacheSwitch>
+              </Switch>
             )}
           </div>
         </div>
@@ -86,7 +89,7 @@ function mapStateToProps({ global }) {
 function mapDispatchToProps(dispatch) {
   return {
     init() {
-      return dispatch({ type: "global/init" });
+      return dispatch({ type: 'global/init' });
     },
     dispatch,
   };
