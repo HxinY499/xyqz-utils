@@ -1,0 +1,144 @@
+.animationWrapper {
+  background-color: #0a1633;
+  height: 100%;
+}
+.threeDContainer {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  margin: auto;
+  top: 70px;
+  .item {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    opacity: 0.8;
+    background-image: linear-gradient(
+      90deg,
+      rgba(0, 109, 160) 0%,
+      rgba(0, 160, 255) 47%,
+      rgba(0, 109, 160) 100%
+    );
+    border-radius: 50%;
+  }
+  .item_one {
+    animation: animX 10s cubic-bezier(0.36, 0, 0.64, 1) -5s infinite alternate,
+      animY 10s cubic-bezier(0.36, 0, 0.64, 1) 0s infinite alternate,
+      scale 20s 0s infinite;
+  }
+  .item_two {
+    animation: animX 10s cubic-bezier(0.36, 0, 0.64, 1) -7s infinite alternate,
+      animY 10s cubic-bezier(0.36, 0, 0.64, 1) -2s infinite alternate,
+      scale 20s -2s infinite alternate;
+  }
+  .item_three {
+    animation: animX 10s cubic-bezier(0.36, 0, 0.64, 1) -9s infinite alternate,
+      animY 10s cubic-bezier(0.36, 0, 0.64, 1) -4s infinite alternate,
+      scale 20s -4s infinite alternate;
+  }
+  .item_four {
+    animation: animX 10s cubic-bezier(0.36, 0, 0.64, 1) -11s infinite alternate,
+      animY 10s cubic-bezier(0.36, 0, 0.64, 1) -6s infinite alternate,
+      scale 20s -6s infinite alternate;
+  }
+  .item_five {
+    animation: animX 10s cubic-bezier(0.36, 0, 0.64, 1) -13s infinite alternate,
+      animY 10s cubic-bezier(0.36, 0, 0.64, 1) -8s infinite alternate,
+      scale 20s -8s infinite alternate;
+  }
+  .item_six {
+    animation: animX 10s cubic-bezier(0.36, 0, 0.64, 1) -15s infinite alternate,
+      animY 10s cubic-bezier(0.36, 0, 0.64, 1) -10s infinite alternate,
+      scale 20s -10s infinite alternate;
+  }
+  .item_seven {
+    animation: animX 10s cubic-bezier(0.36, 0, 0.64, 1) -17s infinite alternate,
+      animY 10s cubic-bezier(0.36, 0, 0.64, 1) -12s infinite alternate,
+      scale 20s -12s infinite alternate;
+  }
+  .item_eight {
+    animation: animX 10s cubic-bezier(0.36, 0, 0.64, 1) -19s infinite alternate,
+      animY 10s cubic-bezier(0.36, 0, 0.64, 1) -14s infinite alternate,
+      scale 20s -14s infinite alternate;
+  }
+  .item_nine {
+    animation: animX 10s cubic-bezier(0.36, 0, 0.64, 1) -21s infinite alternate,
+      animY 10s cubic-bezier(0.36, 0, 0.64, 1) -16s infinite alternate,
+      scale 20s -16s infinite alternate;
+  }
+  .item_ten {
+    animation: animX 10s cubic-bezier(0.36, 0, 0.64, 1) -23s infinite alternate,
+      animY 10s cubic-bezier(0.36, 0, 0.64, 1) -18s infinite alternate,
+      scale 20s -18s infinite alternate;
+  }
+  @keyframes animX {
+    0% {
+      left: 0%;
+    }
+    100% {
+      left: 95%;
+    }
+  }
+  @keyframes animY {
+    0% {
+      top: 0%;
+    }
+    100% {
+      top: 60%;
+    }
+  }
+  @keyframes scale {
+    0% {
+      transform: perspective(270px) translateZ(50px);
+      box-shadow: 0px 0px 15px rgba(4, 253, 255, 0);
+    }
+
+    10% {
+      transform: perspective(270px) translateZ(80px);
+      box-shadow: 0px 0px 15px rgba(4, 253, 255, 0);
+    }
+
+    20% {
+      transform: perspective(270px) translateZ(110px);
+      box-shadow: 0px 0px 15px rgba(4, 253, 255, 0);
+    }
+
+    30% {
+      transform: perspective(270px) translateZ(140px);
+      box-shadow: 0px 0px 15px rgba(4, 253, 255, 0);
+    }
+
+    40% {
+      transform: perspective(270px) translateZ(170px);
+      box-shadow: 0px 0px 15px rgba(4, 253, 255, 0);
+    }
+
+    50% {
+      transform: perspective(270px) translateZ(200px);
+      box-shadow: 0px 0px 15px yellow;
+    }
+
+    60% {
+      transform: perspective(270px) translateZ(170px);
+      box-shadow: 0px 0px 15px rgba(4, 253, 255, 0);
+    }
+
+    70% {
+      transform: perspective(270px) translateZ(140px);
+      box-shadow: 0px 0px 15px rgba(4, 253, 255, 0);
+    }
+
+    80% {
+      transform: perspective(270px) translateZ(110px);
+      box-shadow: 0px 0px 15px rgba(4, 253, 255, 0);
+    }
+    90% {
+      transform: perspective(270px) translateZ(80px);
+      box-shadow: 0px 0px 15px rgba(4, 253, 255, 0);
+    }
+    100% {
+      transform: perspective(270px) translateZ(50px);
+      box-shadow: 0px 0px 15px rgba(4, 253, 255, 0);
+    }
+  }
+}

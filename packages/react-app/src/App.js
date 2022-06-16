@@ -1,6 +1,26 @@
+import { useEffect } from 'react';
 import './App.css';
 
 function App() {
+  useEffect(() => {
+    if (window.microApp) {
+      const dataListener = data => {
+        alert('主应用传来的数据：' + JSON.stringify(data));
+      };
+
+      window.microApp.addDataListener(dataListener);
+      return () => {
+        window.microApp.clearDataListener();
+      };
+    }
+  }, []);
+
+  const sendMeaasgeToMain = () => {
+    window.microApp.dispatch({
+      message: `react-app子应用传来的数据 ${Math.random()}`,
+    });
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -16,6 +36,7 @@ function App() {
           </g>
         </svg>
         <p>Welcome to React</p>
+        <button onClick={sendMeaasgeToMain}>子应用给主应用传消息</button>
         <a
           className="App-link"
           href="https://reactjs.org"

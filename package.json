@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@micro-zoe/micro-app": "^0.8.5",
     "@types/lodash": "^4.14.178",
     "antd": "4.16.0",
     "axios": "0.19.1",

@@ -45,14 +45,49 @@ const router = [
     icon: <CommentOutlined />,
   },
   {
-    path: '/react-app',
-    title: 'React子应用',
+    path: '/css-animation',
+    component: () => import('../routes/Animation/index'),
+    exact: true,
+    title: 'CSS动画',
+    icon: <CommentOutlined />,
+  },
+  {
+    path: '/qiankun-react-app',
+    title: 'qiankun-React子应用',
     icon: <FacebookOutlined />,
   },
   {
-    path: '/vue-app',
-    title: 'Vue子应用',
+    path: '/qiankun-vue-app',
+    title: 'qiankun-Vue子应用',
     icon: <CommentOutlined />,
+  },
+  {
+    path: '/hzero-app',
+    title: 'qiankun-Hzero子应用',
+    icon: <CommentOutlined />,
+  },
+  {
+    path: '/qiankun-multiple-app',
+    title: 'qiankun-多个子应用',
+    icon: <CommentOutlined />,
+  },
+  {
+    path: '/microApp-react-app',
+    title: 'microApp-React子应用',
+    icon: <FacebookOutlined />,
+    component: () => import('../routes/MicroApp/ReactMicroApp'),
+  },
+  {
+    path: '/microApp-vue-app',
+    title: 'microApp-Vue子应用',
+    icon: <CommentOutlined />,
+    component: () => import('../routes/MicroApp/VueMicroApp'),
+  },
+  {
+    path: '/microApp-multiple-app',
+    title: 'microApp-多个子应用',
+    icon: <CommentOutlined />,
+    component: () => import('../routes/MicroApp/MultipleMicroApp'),
   },
 ];
 
