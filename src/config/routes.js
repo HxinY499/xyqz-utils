@@ -52,6 +52,13 @@ const router = [
     icon: <CommentOutlined />,
   },
   {
+    path: '/render-test',
+    component: () => import('../routes/RenderTest'),
+    exact: true,
+    title: '渲染高亮',
+    icon: <CommentOutlined />,
+  },
+  {
     path: '/qiankun-react-app',
     title: 'qiankun-React子应用',
     icon: <FacebookOutlined />,
@@ -59,6 +66,11 @@ const router = [
   {
     path: '/qiankun-vue-app',
     title: 'qiankun-Vue子应用',
+    icon: <CommentOutlined />,
+  },
+  {
+    path: '/qiankun-common-app',
+    title: 'qiankun-common子应用',
     icon: <CommentOutlined />,
   },
   {

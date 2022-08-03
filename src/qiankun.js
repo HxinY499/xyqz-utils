@@ -18,6 +18,12 @@ const vueAppConfig = {
   container: '#vue-app',
   activeRule: location => location.pathname.startsWith('/qiankun-vue-app'),
 };
+const commonAppConfig = {
+  name: 'common-app',
+  entry: 'http://127.0.0.1:5500/packages/common.html',
+  container: '#common-app',
+  activeRule: location => location.pathname.startsWith('/qiankun-common-app'),
+};
 const hzeroConfig = {
   name: 'hzero',
   entry: 'http://localhost:8000',
@@ -29,7 +35,7 @@ const hzeroConfig = {
   // },
 };
 
-registerMicroApps([reactAppConfig, vueAppConfig, hzeroConfig]);
+registerMicroApps([reactAppConfig, vueAppConfig, hzeroConfig, commonAppConfig]);
 
 // 初始化 state
 const state = { message: 'message' };
@@ -39,7 +45,7 @@ actions.onGlobalStateChange((state, prev) => {
   alert('主应用监听到变化' + JSON.stringify(state));
 });
 setTimeout(() => {
-  actions.setGlobalState({ message: '主应用发来message' });
+  // actions.setGlobalState({ message: '主应用发来message' });
 }, 2000);
 
 start();

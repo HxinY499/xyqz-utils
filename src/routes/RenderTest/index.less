@@ -1,0 +1,36 @@
+.item-wrapper {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: blanchedalmond;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+}
+.wrapper {
+  margin: 0 auto;
+  width: 50vw;
+}
+.root-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.son-wrapper,
+.sun-wrapper {
+  display: flex;
+  & > div {
+    flex: 1;
+  }
+}
+.son-inner-wrapper,
+.sun-inner-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+:global {
+  #highlight {
+    transition: all 0.3s;
+    background-color: rgb(224, 132, 132);
+  }
+}

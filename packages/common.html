@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>qiankun子应用-非webpack构建项目</title>
+</head>
+
+<body>
+  <div id="common-root"></div>
+
+  <script entry>
+    const render = (container) => {
+      container.querySelector('#common-root').innerHTML = '<h1>这是一个非wenpack构建的单页面应用</h1>'
+      return Promise.resolve();
+    };
+    ((global) => {
+      global['common'] = {
+        bootstrap: () => {
+          console.log('common bootstrap');
+          return Promise.resolve();
+        },
+        mount: (props) => {
+          return render(props.container);
+        },
+        unmount: () => {
+          console.log('common unmount');
+          return Promise.resolve();
+        },
+      };
+    })(window);
+  </script>
+</body>
+
+</html>
