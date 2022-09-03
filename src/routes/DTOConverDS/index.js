@@ -10,6 +10,7 @@ function DTOConverDS() {
   const leftRef = React.useRef();
   const rightRef = React.useRef();
   const [fields, setFields] = React.useState('');
+  const [columns, setColumns] = React.useState('');
   const [count, setCount] = React.useState(0);
 
   function handleConver() {
@@ -63,7 +64,15 @@ function DTOConverDS() {
       result.push(dsField);
     });
     setCount(result.length);
+    generateColumns(result);
     setFields(JSON.stringify(result));
+  }
+
+  function generateColumns(fields) {
+    const columns = fields.map(o => {
+      return { name: `${o.name}`, header: `${o.label}` };
+    });
+    setColumns(JSON.stringify(columns));
   }
 
   return (
@@ -93,6 +102,9 @@ function DTOConverDS() {
         </div>
         <div className={styles['right-code']}>
           <TextArea ref={rightRef} rows={25} value={fields} />
+        </div>
+        <div className={styles['right-code']}>
+          <TextArea rows={25} value={columns} />
         </div>
       </div>
     </div>
