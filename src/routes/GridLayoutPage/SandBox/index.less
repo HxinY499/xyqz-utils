@@ -1,0 +1,31 @@
+.grid-wrapper {
+  width: 60vw;
+  aspect-ratio: 2/1;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 10;
+  grid-template-rows: 5;
+
+  .grid-cell {
+    border-right: 1px dashed rgba(0, 0, 0, 0.2);
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(86, 171, 189, 0.1);
+    }
+
+    &:nth-child(5n) {
+      border-bottom: none;
+    }
+    &:nth-child(n + 46) {
+      border-right: none;
+    }
+  }
+
+  .selection-grid-cell {
+    position: relative;
+    pointer-events: none;
+    border: 2px solid #59b1c2;
+  }
+}

@@ -32,9 +32,16 @@ const router = [
   },
   {
     path: '/grid-layout',
-    component: () => import('../routes/GridLayoutPage/index'),
+    component: () => import('../routes/GridLayoutPage/Drag/index'),
     exact: true,
     title: '拖拽式卡片',
+    icon: <CommentOutlined />,
+  },
+  {
+    path: '/grid-sandbox',
+    component: () => import('../routes/GridLayoutPage/SandBox/index'),
+    exact: true,
+    title: '网格沙盒',
     icon: <CommentOutlined />,
   },
   {

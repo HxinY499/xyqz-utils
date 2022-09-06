@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import microApp from '@micro-zoe/micro-app';
 /** @jsxRuntime classic */
 /** @jsx jsxCustomEvent */
