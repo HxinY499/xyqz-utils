@@ -36,9 +36,4 @@ localeContext.setLocale(zh_CN);
 // 5. Start
 app.start('#root');
 
-// 接入qiankun
-require('./qiankun');
-// 接入MicroApp
-// require('./micro-app');
-
 export { app, history };

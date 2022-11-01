@@ -53,10 +53,6 @@ function App(props) {
         </div>
         <div className={styles.routeContentWrapper}>
           <div className={styles.routeContent}>
-            <div id="react-app" />
-            <div id="vue-app" />
-            <div id="hzero-app" />
-            <div id="common-app" />
             {/* { history.location.pathname === '/' && <Redirect from="/" to="/index" /> } */}
             {global.routerData.length > 0 && (
               <Switch>

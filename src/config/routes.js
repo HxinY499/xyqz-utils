@@ -8,11 +8,7 @@
 //   icon: React Node, 菜单栏图标,
 // }
 
-import {
-  BookOutlined,
-  CommentOutlined,
-  FacebookOutlined,
-} from '@ant-design/icons';
+import { BookOutlined, CommentOutlined } from '@ant-design/icons';
 
 const router = [
   {
@@ -65,49 +61,6 @@ const router = [
     exact: true,
     title: '渲染高亮',
     icon: <CommentOutlined />,
-  },
-  {
-    path: '/qiankun-react-app',
-    title: 'qiankun-React子应用',
-    icon: <FacebookOutlined />,
-  },
-  {
-    path: '/qiankun-vue-app',
-    title: 'qiankun-Vue子应用',
-    icon: <CommentOutlined />,
-  },
-  {
-    path: '/qiankun-common-app',
-    title: 'qiankun-common子应用',
-    icon: <CommentOutlined />,
-  },
-  {
-    path: '/hzero-app',
-    title: 'qiankun-Hzero子应用',
-    icon: <CommentOutlined />,
-  },
-  {
-    path: '/qiankun-multiple-app',
-    title: 'qiankun-多个子应用',
-    icon: <CommentOutlined />,
-  },
-  {
-    path: '/microApp-react-app',
-    title: 'microApp-React子应用',
-    icon: <FacebookOutlined />,
-    component: () => import('../routes/MicroApp/ReactMicroApp'),
-  },
-  {
-    path: '/microApp-vue-app',
-    title: 'microApp-Vue子应用',
-    icon: <CommentOutlined />,
-    component: () => import('../routes/MicroApp/VueMicroApp'),
-  },
-  {
-    path: '/microApp-multiple-app',
-    title: 'microApp-多个子应用',
-    icon: <CommentOutlined />,
-    component: () => import('../routes/MicroApp/MultipleMicroApp'),
   },
 ];
 
