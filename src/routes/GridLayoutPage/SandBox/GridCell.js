@@ -37,7 +37,7 @@ export default function GridCell(props) {
   const { section = {} } = props;
   const { selection, setState, computeSelection } = useContext(Store);
 
-  function setSlectionFromEvent(e) {
+  function setSelectionFromEvent(e) {
     const movedSection = sectionFromEvent(e);
     if (movedSection) {
       setState('selection', computeSelection(movedSection));
@@ -57,13 +57,13 @@ export default function GridCell(props) {
           });
           shouldGetNewBaseSection = false;
         } else {
-          setSlectionFromEvent(e);
+          setSelectionFromEvent(e);
         }
       };
       const onPointerUp = e => {
         preventDefault(e);
         removeEventListener(onPointerMove, onPointerUp);
-        setSlectionFromEvent(e);
+        setSelectionFromEvent(e);
       };
       addEventListener(onPointerMove, onPointerUp);
     } else {
@@ -74,7 +74,7 @@ export default function GridCell(props) {
       });
       const onPointerMove = e => {
         preventDefault(e);
-        setSlectionFromEvent(e);
+        setSelectionFromEvent(e);
       };
       const onPointerUp = e => {
         preventDefault(e);
@@ -89,12 +89,11 @@ export default function GridCell(props) {
     <section
       style={{ gridArea }}
       className={styles['grid-cell']}
-      id={props.id}
       onPointerDown={cellDown}
       data-col-start={section.col.start}
       data-row-start={section.row.start}
       data-col-end={section.col.end}
       data-row-end={section.row.end}
-    ></section>
+    />
   );
 }

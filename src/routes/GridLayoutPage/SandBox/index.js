@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import styles from './index.less';
 import Store, { StoreProvider } from './store';
 import GridCell from './GridCell';
-import GridSelection from './GridSelection';
+import AreaSelection from './AreaSelection';
+import AreaField from './AreaField';
 
 function GridSandBox(props) {
-  const { gridCells, selection } = useContext(Store);
+  const { gridCells, selection, doneFields } = useContext(Store);
 
   return (
     <>
@@ -13,7 +14,13 @@ function GridSandBox(props) {
         {gridCells.map(cell => (
           <GridCell section={cell} key={cell._id} />
         ))}
-        {selection.begin && <GridSelection />}
+        {selection.begin && <AreaSelection />}
+        {doneFields.map(
+          (field, index) =>
+            field.status !== 'delete' && (
+              <AreaField areaField={field} index={index} />
+            )
+        )}
       </div>
     </>
   );
