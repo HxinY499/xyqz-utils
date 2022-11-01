@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@micro-zoe/micro-app": "^0.8.5",
     "@types/lodash": "^4.14.178",
     "antd": "4.23.0",
     "axios": "0.19.1",
@@ -32,7 +31,6 @@
     "optimize-css-assets-webpack-plugin": "5.0.4",
     "pnp-webpack-plugin": "1.6.4",
     "prompts": "2.4.0",
-    "qiankun": "^2.7.0",
     "react": "^17.0.2",
     "react-app-polyfill": "^2.0.0",
     "react-dev-utils": "^11.0.3",
