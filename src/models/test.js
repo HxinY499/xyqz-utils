@@ -1,8 +1,8 @@
 const test = {
-  namespace: "test",
+  namespace: 'test',
 
   state: {
-    testArr: "a",
+    testArr: 'a',
   },
 
   effects: {},
@@ -18,6 +18,7 @@ const test = {
 
   subscriptions: {
     setup({ dispatch, history }) {
+      console.log('test');
       // eslint-disable-line
     },
   },

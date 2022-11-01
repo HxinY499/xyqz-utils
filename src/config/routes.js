@@ -26,6 +26,7 @@ const router = [
   {
     path: '/dto-conver-ds',
     component: () => import('../routes/DTOConverDS/index'),
+    models: ['test'],
     exact: true,
     title: '后端DTO转前端DS',
     icon: <CommentOutlined />,

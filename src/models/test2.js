@@ -1,8 +1,8 @@
 const test = {
-  namespace: "test2",
+  namespace: 'test2',
 
   state: {
-    testArr: "a",
+    testArr: 'a',
   },
 
   effects: {},
@@ -17,7 +17,9 @@ const test = {
   },
 
   subscriptions: {
-    setup({ dispatch, history }) {},
+    setup({ dispatch, history }) {
+      console.log('test2');
+    },
   },
 };
 export default test;

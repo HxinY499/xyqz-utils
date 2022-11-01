@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useRef, useState } from 'react';
+import React, { createContext, useLayoutEffect, useRef, useState } from 'react';
 
 const Store = createContext();
 export default Store;
@@ -8,7 +8,8 @@ function generateGridCells({ columns, rows }) {
   for (let i = 1; i <= columns; i++) {
     const col = { start: i, end: i + 1 };
     for (let j = 1; j <= rows; j++) {
-      sections.push({ col, row: { start: j, end: j + 1 } });
+      const section = { col, row: { start: j, end: j + 1 } };
+      sections.push({ ...section, _id: JSON.stringify(section) });
     }
   }
   return sections;
@@ -20,7 +21,7 @@ export function StoreProvider(props) {
   const [selection, setSelection] = useState({});
   const selectionRef = useRef(selection);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     selectionRef.current = selection;
   }, [selection]);
 

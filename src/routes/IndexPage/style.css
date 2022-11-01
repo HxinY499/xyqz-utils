@@ -1,0 +1,29 @@
+.test {
+  /* width: 400px; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  padding: 0 !important;
+}
+.animateWrapper {
+  width: 100%;
+  overflow: hidden;
+}
+.animate {
+  animation: wordsLoop 5s linear infinite normal;
+  width: 600px;
+}
+
+@keyframes wordsLoop {
+  0% {
+    color: #000;
+    transform: translateX(0%);
+  }
+  100% {
+    color: #a1a9b6;
+    transform: translateX(100%);
+  }
+}

@@ -1,8 +1,8 @@
-import { getRouterData } from "../utils/convertRouter";
-import { app } from "../index";
+import { getRouterData } from '../utils/convertRouter';
+import { app } from '../index';
 
 const global = {
-  namespace: "global",
+  namespace: 'global',
 
   state: {
     routerData: [],
@@ -12,7 +12,7 @@ const global = {
     *init(state, { put }) {
       window.dvaApp = app;
       const routes = getRouterData({ app });
-      yield put({ type: "updateState", payload: { routerData: routes } });
+      yield put({ type: 'updateState', payload: { routerData: routes } });
     },
   },
 
@@ -28,6 +28,10 @@ const global = {
   subscriptions: {
     setup({ dispatch, history }) {
       // eslint-disable-line
+      console.log('global');
+    },
+    keyEvent({ dispatch }) {
+      console.log('keyEvent');
     },
   },
 };

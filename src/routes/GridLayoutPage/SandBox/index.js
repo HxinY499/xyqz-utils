@@ -10,8 +10,8 @@ function GridSandBox(props) {
   return (
     <>
       <div className={styles['grid-wrapper']}>
-        {gridCells.map((cell, index) => (
-          <GridCell section={cell} key={`section-${index}`} id={index} />
+        {gridCells.map(cell => (
+          <GridCell section={cell} key={cell._id} />
         ))}
         {selection.begin && <GridSelection />}
       </div>
