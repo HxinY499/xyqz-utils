@@ -3,7 +3,6 @@ import { connect } from 'dva';
 // import { CacheRoute, CacheSwitch } from "./components/CacheRoute/index.ts";
 import { Route, Switch } from 'react-router';
 import styles from './index.less';
-import 'antd/dist/antd.css';
 
 function App(props) {
   const { init, global, history, location } = props;

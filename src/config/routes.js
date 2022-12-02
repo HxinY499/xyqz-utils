@@ -41,13 +41,13 @@ const router = [
     title: '网格沙盒',
     icon: <CommentOutlined />,
   },
-  {
-    path: '/c7n-test',
-    component: () => import('../routes/C7NTest/index'),
-    exact: true,
-    title: 'C7N组件测试',
-    icon: <CommentOutlined />,
-  },
+  // {
+  //   path: '/c7n-test',
+  //   component: () => import('../routes/C7NTest/index'),
+  //   exact: true,
+  //   title: 'C7N组件测试',
+  //   icon: <CommentOutlined />,
+  // },
   {
     path: '/css-animation',
     component: () => import('../routes/Animation/index'),
