@@ -1,83 +1,55 @@
-import React, { useMemo } from 'react';
-import { DataSet, Table } from 'choerodon-ui/pro';
+import React from 'react';
+import { Animate, Button } from 'choerodon-ui';
 
-const ds = () => ({
-  transport: {
-    read: config => {
-      return {
-        url: `http://gateway.clmp-dev.csleasing.com.cn/cloa-invoice-folder/v1/3/invoice/image/197400`,
-        method: 'POST',
-      };
-    },
-  },
-  fields: [
-    {
-      name: 'name',
-      label: '姓名',
-      type: 'string',
-    },
-    {
-      name: 'age',
-      label: '年龄',
-      type: 'number',
-    },
-    {
-      name: 'gender',
-      label: '性别',
-      type: 'string',
-    },
-  ],
-  queryFields: [
-    {
-      name: 'name',
-      label: '姓名',
-      type: 'string',
-    },
-    {
-      name: 'age',
-      label: '年龄',
-      type: 'number',
-    },
-    {
-      name: 'gender',
-      label: '性别',
-      type: 'string',
-    },
-  ],
-  events: {},
-});
+export default class C7NTest extends React.PureComponent {
+  state = { list: [1, 2, 3, 4] };
 
-// const data = [
-//   {
-//     name: "何欣宇",
-//     age: 20,
-//     gender: "男",
-//   },
-//   {
-//     name: "XXX",
-//     age: 21,
-//     gender: "女",
-//   },
-//   {
-//     name: "QQQ",
-//     age: 22,
-//     gender: "男",
-//   },
-// ];
+  start = 5;
 
-function C7NTest() {
-  const tableDs = useMemo(() => new DataSet(ds()), []);
+  insert = () => {
+    const list = this.state.list.slice();
+    list.splice(2, 0, (this.start += 1));
+    this.setState({ list });
+  };
 
-  const column = useMemo(
-    () => [{ name: 'name' }, { name: 'age' }, { name: 'gender' }],
-    []
-  );
+  remove = value => {
+    const list = this.state.list.slice();
+    const index = list.indexOf(value);
+    if (index !== -1) {
+      list.splice(index, 1);
+      this.setState({ list });
+    }
+  };
 
-  return (
-    <>
-      <Table dataSet={tableDs} columns={column} />
-    </>
-  );
+  renderItems() {
+    const { list } = this.state;
+    return list.map(value => (
+      <Li value={value} key={value} />
+      //       <li
+      //   key={value}
+      //   style={{ border: '1px solid #000', marginBottom: '10px' }}
+      // >
+      //   <div onClick={() => this.remove(value)}>{value}</div>
+      // </li>
+    ));
+  }
+
+  render() {
+    return (
+      <div>
+        <Button onClick={this.insert}>添加</Button>
+        <Animate component="ul" transitionName="fade">
+          {this.renderItems()}
+        </Animate>
+      </div>
+    );
+  }
 }
 
-export default C7NTest;
+function Li({ value }) {
+  return (
+    <li key={value} style={{ border: '1px solid #000', marginBottom: '10px' }}>
+      <div>{value}</div>
+    </li>
+  );
+}

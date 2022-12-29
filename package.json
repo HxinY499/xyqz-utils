@@ -4,12 +4,13 @@
   "private": true,
   "dependencies": {
     "@types/lodash": "^4.14.178",
-    "antd": "^5.0.0",
+    "antd": "4.23.0",
     "axios": "^1.2.0",
     "bfj": "^7.0.2",
     "camelcase": "^6.1.0",
     "case-sensitive-paths-webpack-plugin": "2.3.0",
-    "choerodon-ui": "^1.5.2",
+    "choerodon-ui": "^1.5.8",
+    "css-animation": "^2.0.4",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
     "dva": "^2.4.1",
@@ -42,7 +43,9 @@
     "react-scripts": "4.0.3",
     "resolve": "1.18.1",
     "terser-webpack-plugin": "4.2.3",
-    "ts-pnp": "1.2.0"
+    "ts-pnp": "1.2.0",
+    "tween-one": "^1.2.2",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.12.3",

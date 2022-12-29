@@ -1,21 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import { Button } from 'antd';
+import anim from 'css-animation';
+import Animate from './Animate';
 import styles from './index.less';
 
-export default function Animation() {
+export default function CSSAnimate() {
+  const [state, setState] = useState([]);
+  const count = useRef(0);
+
+  const insert = () => {
+    const list = [...state];
+    if (list.length > 3) {
+      list.splice(2, 0, { value: count.current++ });
+    } else {
+      list.push({ value: count.current++ });
+    }
+    setState(list);
+  };
+  const remove = i => {
+    const list = [...state];
+    list.splice(i, 1);
+    setState(list);
+  };
   return (
-    <div className={styles.animationWrapper}>
-      <div className={styles.threeDContainer}>
-        <div className={`${styles.item} ${styles['item_one']}`} />
-        <div className={`${styles.item} ${styles['item_two']}`} />
-        <div className={`${styles.item} ${styles['item_three']}`} />
-        <div className={`${styles.item} ${styles['item_four']}`} />
-        <div className={`${styles.item} ${styles['item_five']}`} />
-        <div className={`${styles.item} ${styles['item_six']}`} />
-        <div className={`${styles.item} ${styles['item_seven']}`} />
-        <div className={`${styles.item} ${styles['item_eight']}`} />
-        <div className={`${styles.item} ${styles['item_nine']}`} />
-        <div className={`${styles.item} ${styles['item_ten']}`} />
-      </div>
+    <div className={styles.wrapper}>
+      <button onClick={insert}>添加</button>
+      <Animate component="ul" transitionName="fade">
+        {state.map((o, i) => (
+          <h1 key={o.value} onClick={() => remove(i)}>
+            {o.value}
+          </h1>
+          // <H1 key={o.value} click={() => remove(i)}>
+          //   {o.value}
+          // </H1>
+        ))}
+      </Animate>
     </div>
   );
 }
+// function H1({ children, click }) {
+//   return <h1 onClick={click}>{children}</h1>;
+// }

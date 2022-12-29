@@ -4,7 +4,7 @@ import Store from './store';
 
 function sectionFromEvent(event) {
   const el = document.elementFromPoint(event.clientX, event.clientY);
-  const { colStart, rowStart, colEnd, rowEnd } = el.dataset;
+  const { colStart, rowStart, colEnd, rowEnd } = el.dataset || {};
   if (el && colStart) {
     return {
       col: {

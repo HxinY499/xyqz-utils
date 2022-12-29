@@ -24,15 +24,5 @@ const global = {
       };
     },
   },
-
-  subscriptions: {
-    setup({ dispatch, history }) {
-      // eslint-disable-line
-      console.log('global');
-    },
-    keyEvent({ dispatch }) {
-      console.log('keyEvent');
-    },
-  },
 };
 export default global;
