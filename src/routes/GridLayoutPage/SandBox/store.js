@@ -34,18 +34,6 @@ export function StoreProvider(props) {
     selectionRef.current = selection;
   }, [selection]);
 
-  const setState = useCallback((type, newState) => {
-    if (typeof type === 'string') {
-      setStateBasis(type, newState);
-    } else if (Array.isArray(type)) {
-      ReactDOM.unstable_batchedUpdates(() => {
-        for (let i = 0; i < type.length; i++) {
-          setStateBasis(type[i], newState[type[i]]);
-        }
-      });
-    }
-  }, []);
-
   const setStateBasis = useCallback((type, newState) => {
     switch (type) {
       case 'selection':
@@ -58,6 +46,21 @@ export function StoreProvider(props) {
         break;
     }
   }, []);
+
+  const setState = useCallback(
+    (type, newState) => {
+      if (typeof type === 'string') {
+        setStateBasis(type, newState);
+      } else if (Array.isArray(type)) {
+        ReactDOM.unstable_batchedUpdates(() => {
+          for (let i = 0; i < type.length; i++) {
+            setStateBasis(type[i], newState[type[i]]);
+          }
+        });
+      }
+    },
+    [setStateBasis]
+  );
 
   function computeSelection(newSection) {
     const { baseSection } = selectionRef.current;

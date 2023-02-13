@@ -1,6 +1,4 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
-import { Button } from 'antd';
-import anim from 'css-animation';
+import React, { useState, useRef } from 'react';
 import Animate from './Animate';
 import styles from './index.less';
 

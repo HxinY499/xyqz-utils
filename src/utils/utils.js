@@ -1,7 +1,9 @@
 export function uuid() {
-  return Number(Math.random().toString().substr(3, 3) + Date.now()).toString(
-    36
-  );
+  return Number(
+    Math.random()
+      .toString()
+      .substr(3, 3) + Date.now()
+  ).toString(36);
 }
 
 /**
@@ -19,3 +21,15 @@ export function includes(string, array) {
   }
   return false;
 }
+
+export const getRouteState = (cacheKey, history) => {
+  const { location } = history;
+  if (location.state) {
+    const d = JSON.stringify(location.state);
+    sessionStorage.setItem(cacheKey, d);
+    return location.state;
+  } else {
+    const state = sessionStorage.getItem(cacheKey);
+    return state ? JSON.parse(state) : {};
+  }
+};

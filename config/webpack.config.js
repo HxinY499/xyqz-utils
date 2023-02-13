@@ -473,6 +473,12 @@ module.exports = function(webpackEnv) {
                       },
                     },
                   ],
+                  // [
+                  //   '@babel/plugin-proposal-private-property-in-object',
+                  //   { loose: true },
+                  // ],
+                  // ['@babel/plugin-proposal-class-properties'],
+                  // ['@babel/plugin-proposal-private-methods'],
                   isEnvDevelopment &&
                     shouldUseReactRefresh &&
                     require.resolve('react-refresh/babel'),
@@ -502,13 +508,21 @@ module.exports = function(webpackEnv) {
                     { helpers: true },
                   ],
                 ],
+                plugins: [
+                  // [
+                  //   '@babel/plugin-proposal-private-property-in-object',
+                  //   { loose: true },
+                  // ],
+                  // ['@babel/plugin-proposal-class-properties', { loose: true }],
+                  // ['@babel/plugin-proposal-private-methods', { loose: true }],
+                ],
                 cacheDirectory: true,
                 // See #6846 for context on why cacheCompression is disabled
                 cacheCompression: false,
 
                 // Babel sourcemaps are needed for debugging into node_modules
                 // code.  Without the options below, debuggers like VSCode
-                // show incorrect code and set breakpoints on the wrong lines.
+                // show incorrect code and s gbet breakpoints on the wrong lines.
                 sourceMaps: shouldUseSourceMap,
                 inputSourceMap: shouldUseSourceMap,
               },

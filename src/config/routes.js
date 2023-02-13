@@ -28,6 +28,13 @@ const router = [
     icon: <CommentOutlined />,
   },
   {
+    path: '/batch-print',
+    component: () => import('../routes/BatchPrint/index'),
+    exact: true,
+    title: '批量打印pdf',
+    icon: <CommentOutlined />,
+  },
+  {
     path: '/grid-layout',
     component: () => import('../routes/GridLayoutPage/Drag/index'),
     exact: true,
