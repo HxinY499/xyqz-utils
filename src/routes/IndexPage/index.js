@@ -39,5 +39,5 @@ export default connect()(App);
 // export default connect(({ global }) => {
 //   return {
 //     global,
-//   };
+//   }
 // })(App)
