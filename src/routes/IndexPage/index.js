@@ -20,9 +20,11 @@ import { Button } from 'antd';
 //     );
 //   }
 // }
-//渲染生成图片
 function App(props) {
-  const handleClick = async () => {};
+  console.log(props);
+  const handleClick = async () => {
+    props.history.push('/dto-conver-ds');
+  };
   return (
     <>
       <Button type="primary" onClick={handleClick}>
@@ -31,6 +33,7 @@ function App(props) {
     </>
   );
 }
+
 export default connect()(App);
 
 // export default connect(({ global }) => {

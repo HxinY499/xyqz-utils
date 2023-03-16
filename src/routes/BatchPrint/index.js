@@ -7,14 +7,14 @@ const A4SIZE = { width: 210, height: 297 }; // 单位mm
 
 function renderImg(pdfFile, pageNumber, canvasContext) {
   pdfFile.getPage(pageNumber).then(function(page) {
-    let viewport = page.getViewport(3); // 页面缩放比例
+    let viewport = page.getViewport(6); // 页面缩放比例
     let newcanvas = canvasContext.canvas;
     //设置canvas真实宽高
     newcanvas.width = viewport.width;
     newcanvas.height = viewport.height;
     //设置canvas在浏览中宽高
-    newcanvas.style.minWidth = `${A4SIZE.width}px`;
-    newcanvas.style.minHeight = `${A4SIZE.height}px`;
+    // newcanvas.style.minWidth = `${A4SIZE.width}px`;
+    // newcanvas.style.minHeight = `${A4SIZE.height}px`;
     let renderContext = {
       canvasContext: canvasContext,
       viewport: viewport,

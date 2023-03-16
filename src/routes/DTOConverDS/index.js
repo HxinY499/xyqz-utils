@@ -6,7 +6,7 @@ import { includes } from '../../utils/utils';
 
 const { TextArea } = Input;
 
-function DTOConverDS() {
+function DTOConverDS(props) {
   const leftRef = React.useRef();
   const rightRef = React.useRef();
   const [fields, setFields] = React.useState('');
