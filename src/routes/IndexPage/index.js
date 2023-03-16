@@ -40,4 +40,4 @@ export default connect()(App);
 //   return {
 //     global,
 //   };
-// })(App);
+// })(App)
