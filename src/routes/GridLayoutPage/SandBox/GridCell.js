@@ -89,11 +89,21 @@ export default function GridCell(props) {
     <section
       style={{ gridArea }}
       className={styles['grid-cell']}
-      onPointerDown={cellDown}
-      data-col-start={section.col.start}
-      data-row-start={section.row.start}
-      data-col-end={section.col.end}
-      data-row-end={section.row.end}
-    />
+      // onPointerDown={cellDown}
+      // data-col-start={section.col.start}
+      // data-row-start={section.row.start}
+      // data-col-end={section.col.end}
+      // data-row-end={section.row.end}
+    >
+      <div className={styles['cell-left-top']}></div>
+      <div
+        className={styles['grid-cell-main']}
+        onPointerDown={cellDown}
+        data-col-start={section.col.start}
+        data-row-start={section.row.start}
+        data-col-end={section.col.end}
+        data-row-end={section.row.end}
+      ></div>
+    </section>
   );
 }

@@ -25,14 +25,19 @@ const allFields = [
 
 export function StoreProvider(props) {
   const { children } = props;
-  const gridCells = generateGridCells({ columns: 12, rows: 5 });
-  const [selection, setSelection] = useState({});
+  const [gridConfig, setGridConfig] = useState({ columns: 12, rows: 5 });
+  const gridCells = generateGridCells({
+    columns: gridConfig.columns,
+    rows: gridConfig.rows,
+  });
+  const [gridContainerStyle, setGridContainerStyle] = useState({});
+  const [selection, setSelection] = useState({
+    'grid-template-rows': `repeat(${gridConfig.rows}, 1fr)`,
+    'grid-template-columns': `repeat(${gridConfig.columns}, 1fr)`,
+  });
   const [doneFields, setDoneFields] = useState([]);
-  const selectionRef = useRef(selection);
-
-  useLayoutEffect(() => {
-    selectionRef.current = selection;
-  }, [selection]);
+  const selectionRef = useRef();
+  selectionRef.current = selection;
 
   const setStateBasis = useCallback((type, newState) => {
     switch (type) {
@@ -41,6 +46,13 @@ export function StoreProvider(props) {
         break;
       case 'doneFields':
         setDoneFields(newState);
+        break;
+      case 'gridConfig':
+        setGridConfig(newState);
+        setGridContainerStyle({
+          'grid-template-rows': `repeat(${newState.rows}, 1fr)`,
+          'grid-template-columns': `repeat(${newState.columns}, 1fr)`,
+        });
         break;
       default:
         break;
@@ -76,6 +88,8 @@ export function StoreProvider(props) {
         computeSelection,
         allFields,
         doneFields,
+        gridContainerStyle,
+        gridConfig,
       }}
     >
       {children}
