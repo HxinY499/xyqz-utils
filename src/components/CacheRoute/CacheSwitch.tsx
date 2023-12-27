@@ -1,6 +1,11 @@
-import * as React from "react";
-import { __RouterContext as RouterContext, matchPath, SwitchProps } from "react-router";
-import invariant from "tiny-invariant";
+// @ts-nocheck
+import * as React from 'react';
+import {
+  __RouterContext as RouterContext,
+  matchPath,
+  SwitchProps,
+} from 'react-router';
+import invariant from 'tiny-invariant';
 
 interface SwitchPropsExt extends SwitchProps {
   // 不缓存模式
@@ -48,7 +53,7 @@ export default function CacheSwitch(props: SwitchPropsExt) {
                     forceHide: forceHide,
                     // 使用key是必要的，因为Switch下的children是组件数组
                     // 优先使用element的key，如果没有，使用path作为key
-                    key: compnentIdentity
+                    key: compnentIdentity,
                   })
                 );
             };

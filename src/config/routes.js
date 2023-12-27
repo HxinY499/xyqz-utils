@@ -20,6 +20,14 @@ const router = [
     icon: <BookOutlined />,
   },
   {
+    path: '/test',
+    component: () => import('../routes/Test/index'),
+    models: [],
+    exact: true,
+    title: '测试页',
+    icon: <BookOutlined />,
+  },
+  {
     path: '/dto-conver-ds',
     component: () => import('../routes/DTOConverDS/index'),
     models: ['test'],
@@ -27,20 +35,13 @@ const router = [
     title: '后端DTO转前端DS',
     icon: <CommentOutlined />,
   },
-  {
-    path: '/batch-print',
-    component: () => import('../routes/BatchPrint/index'),
-    exact: true,
-    title: '批量打印pdf',
-    icon: <CommentOutlined />,
-  },
-  {
-    path: '/grid-layout',
-    component: () => import('../routes/GridLayoutPage/Drag/index'),
-    exact: true,
-    title: '拖拽式卡片',
-    icon: <CommentOutlined />,
-  },
+  // {
+  //   path: '/batch-print',
+  //   component: () => import('../routes/BatchPrint/index'),
+  //   exact: true,
+  //   title: '批量打印pdf',
+  //   icon: <CommentOutlined />,
+  // },
   {
     path: '/grid-sandbox',
     component: () => import('../routes/GridLayoutPage/SandBox/index'),
@@ -50,16 +51,9 @@ const router = [
   },
   {
     path: '/c7n-test',
-    component: () => import('../routes/C7NTest/index'),
+    component: () => import('../routes/C7NTest/index.jsx'),
     exact: true,
     title: 'C7N组件测试',
-    icon: <CommentOutlined />,
-  },
-  {
-    path: '/css-animation',
-    component: () => import('../routes/Animation'),
-    exact: true,
-    title: 'Animate',
     icon: <CommentOutlined />,
   },
   {

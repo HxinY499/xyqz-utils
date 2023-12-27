@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 
 export default function Remount(props) {
@@ -7,5 +8,7 @@ export default function Remount(props) {
     // 更新key
     keyRef.current = Math.random() + Date.now();
   }
-  return React.cloneElement(React.Children.only(props.children), { key: keyRef.current })
+  return React.cloneElement(React.Children.only(props.children), {
+    key: keyRef.current,
+  });
 }
